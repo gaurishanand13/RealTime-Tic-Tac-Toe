@@ -64,7 +64,7 @@ class Game_Activity : AppCompatActivity(),View.OnClickListener{
             /**
              * Now check for the winner condition
              */
-            if(count>=5)
+            if(count>=5 && count!=9)
             {
                 if(myObject.checkWinner() == true)
                 {
@@ -101,18 +101,54 @@ class Game_Activity : AppCompatActivity(),View.OnClickListener{
             }
             if(count == 9)
             {
-                //match is drawn if it comes from above.
-                AlertDialog.Builder(this)
-                    .setIcon(android.R.drawable.dialog_frame)
-                    .setTitle("OOPS! MATCH IS DRAWN")
-                    .setMessage("Do you want to play it again")
-                    .setPositiveButton("YES"){ dialogInterface, i ->
-                        playAgainSetUp()
+
+                if(myObject.checkWinner() == true)
+                {
+                    if(player1 == false)
+                    {
+                        //winner is player 1
+                        AlertDialog.Builder(this)
+                            .setTitle("Congratulations to PLAYER 1 for winning")
+                            .setMessage("Do you want to play it again")
+                            .setPositiveButton("YES"){ dialogInterface, i ->
+                                playAgainSetUp()
+                            }
+                            .setNegativeButton("NO"){dialogInterface, i ->
+                                finish()
+                            }
+                            .show()
                     }
-                    .setNegativeButton("NO"){dialogInterface, i ->
-                        finish();
+                    else
+                    {
+                        //winner is player too
+                        AlertDialog.Builder(this)
+                            .setIcon(android.R.drawable.dialog_frame)
+                            .setTitle("Congratulations to PLAYER 2 for winning")
+                            .setMessage("Do you want to play it again")
+                            .setPositiveButton("YES"){ dialogInterface, i ->
+                                playAgainSetUp()
+                            }
+                            .setNegativeButton("NO"){dialogInterface, i ->
+                                finish();
+                            }
+                            .show()
                     }
-                    .show()
+                }else{
+
+                    //match is drawn if it comes from above.
+                    AlertDialog.Builder(this)
+                        .setIcon(android.R.drawable.dialog_frame)
+                        .setTitle("OOPS! MATCH IS DRAWN")
+                        .setMessage("Do you want to play it again")
+                        .setPositiveButton("YES"){ dialogInterface, i ->
+                            playAgainSetUp()
+                        }
+                        .setNegativeButton("NO"){dialogInterface, i ->
+                            finish();
+                        }
+                        .show()
+
+                }
             }
         }
     }

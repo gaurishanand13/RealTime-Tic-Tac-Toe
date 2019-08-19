@@ -218,7 +218,7 @@ class online_game_activity : AppCompatActivity() ,CoroutineScope{
         /**
          * Now check for the winner condition
          */
-        if(count>=5)
+        if(count>=5 && count!=9)
         {
             if(myObjectClass.checkWinner() == true)
             {
@@ -258,17 +258,54 @@ class online_game_activity : AppCompatActivity() ,CoroutineScope{
         }
         if(count == 9)
         {
-            //match is drawn if it comes from above.
-            AlertDialog.Builder(this)
-                .setTitle("OOPS! MATCH IS DRAWN")
-                .setMessage("Do you want to play it again")
-                .setPositiveButton("YES"){ dialogInterface, i ->
-                    playAgainSetUp()
+
+            if(myObjectClass.checkWinner() == true)
+            {
+
+                /**
+                 * First find whose active chance is not
+                 */
+                if(count%2==1)
+                {
+                    //winner is player 1
+                    AlertDialog.Builder(this)
+                        .setTitle("Congratulations to X for winning")
+                        .setMessage("Do you want to play it again")
+                        .setPositiveButton("YES"){ dialogInterface, i ->
+                            playAgainSetUp()
+                        }
+                        .setNegativeButton("NO"){dialogInterface, i ->
+                            finish()
+                        }
+                        .show()
                 }
-                .setNegativeButton("NO"){dialogInterface, i ->
-                    finish();
+                else
+                {
+                    //winner is player too
+                    AlertDialog.Builder(this)
+                        .setTitle("Congratulations to O for winning")
+                        .setMessage("Do you want to play it again")
+                        .setPositiveButton("YES"){ dialogInterface, i ->
+                            playAgainSetUp()
+                        }
+                        .setNegativeButton("NO"){dialogInterface, i ->
+                            finish();
+                        }
+                        .show()
                 }
-                .show()
+            }else{
+                //match is drawn if it comes from above.
+                AlertDialog.Builder(this)
+                    .setTitle("OOPS! MATCH IS DRAWN")
+                    .setMessage("Do you want to play it again")
+                    .setPositiveButton("YES"){ dialogInterface, i ->
+                        playAgainSetUp()
+                    }
+                    .setNegativeButton("NO"){dialogInterface, i ->
+                        finish();
+                    }
+                    .show()
+            }
         }
     }
 
