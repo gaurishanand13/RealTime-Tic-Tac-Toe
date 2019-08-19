@@ -1,8 +1,8 @@
-# RealTime-Tic-Tac-Toe
-It is a tic tac toe game in which we can play (Backend used - Firebase)
+# RealTime-Tic-Tac-Toe  (Backend used - Firebase)
+It is a tic tac toe game in which we can play -
 ### 1) locally on the device
 ### 2) online on 2 different devices 
-Hope you will enjoy this game. The apk link for the app is here - https://drive.google.com/file/d/1-64JBdMr7k551fOzoMxX52pFMCKYFZYa/view?usp=drivesdk
+Hope you will enjoy this game. The apk link for the app is here - https://drive.google.com/file/d/1078BILfl8WaPpYjdHoVZJsx3JeiaYF6P/view?usp=drivesdk
 ## SCREENSHOTS - 
 ![WhatsApp Image 2019-08-15 at 2 38 30 AM (3)](https://user-images.githubusercontent.com/43893611/63056844-88f55800-bf06-11e9-9448-03ac018a7897.jpeg)
 </br>
