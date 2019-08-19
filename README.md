@@ -2,7 +2,7 @@
 It is a tic tac toe game in which we can play -
 ### 1) locally on the device
 ### 2) online on 2 different devices 
-Hope you will enjoy this game (Though UI needs to be improved). Still The apk link for the app is here - https://drive.google.com/file/d/1078BILfl8WaPpYjdHoVZJsx3JeiaYF6P/view?usp=drivesdk
+Hope you will enjoy this game (Though UI needs to be improved). Still The apk link for the app [is here](https://github.com/gaurishanand13/RealTime-Tic-Tac-Toe/blob/master/app/release/app-release.apk)
 ## SCREENSHOTS - 
 ![WhatsApp Image 2019-08-15 at 2 38 30 AM (3)](https://user-images.githubusercontent.com/43893611/63056844-88f55800-bf06-11e9-9448-03ac018a7897.jpeg)
 </br>
