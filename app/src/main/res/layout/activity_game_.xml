@@ -8,6 +8,7 @@
         tools:context=".local_game_activity.Game_Activity"
         android:background="@android:color/holo_red_dark">
     <FrameLayout
+            android:id="@+id/localGameActivityFrameLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">

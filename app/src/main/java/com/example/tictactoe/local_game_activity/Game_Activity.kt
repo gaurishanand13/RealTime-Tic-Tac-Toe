@@ -1,14 +1,21 @@
 package com.example.tictactoe.local_game_activity
 
+import android.content.Context
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.tictactoe.R
 import com.example.tictactoe.check_winner_algo.winner
 import kotlinx.android.synthetic.main.activity_game_.*
+import kotlinx.android.synthetic.main.custom_toast.*
+import kotlinx.android.synthetic.main.custom_toast.view.*
 
 class Game_Activity : AppCompatActivity(),View.OnClickListener{
 
@@ -72,7 +79,8 @@ class Game_Activity : AppCompatActivity(),View.OnClickListener{
                     {
                         //winner is player 1
                         AlertDialog.Builder(this)
-                            .setTitle("Congratulations to PLAYER 1 for winning")
+                            .setTitle("Congratulations to X for winning")
+                            .setCancelable(false)
                             .setMessage("Do you want to play it again")
                             .setPositiveButton("YES"){ dialogInterface, i ->
                                 playAgainSetUp()
@@ -86,14 +94,14 @@ class Game_Activity : AppCompatActivity(),View.OnClickListener{
                     {
                         //winner is player too
                         AlertDialog.Builder(this)
-                            .setIcon(android.R.drawable.dialog_frame)
-                            .setTitle("Congratulations to PLAYER 2 for winning")
+                            .setTitle("Congratulations to O for winning")
                             .setMessage("Do you want to play it again")
+                            .setCancelable(false)
                             .setPositiveButton("YES"){ dialogInterface, i ->
                                 playAgainSetUp()
                             }
                             .setNegativeButton("NO"){dialogInterface, i ->
-                                finish();
+                                finish()
                             }
                             .show()
                     }
@@ -108,8 +116,9 @@ class Game_Activity : AppCompatActivity(),View.OnClickListener{
                     {
                         //winner is player 1
                         AlertDialog.Builder(this)
-                            .setTitle("Congratulations to PLAYER 1 for winning")
+                            .setTitle("Congratulations to X for winning")
                             .setMessage("Do you want to play it again")
+                            .setCancelable(false)
                             .setPositiveButton("YES"){ dialogInterface, i ->
                                 playAgainSetUp()
                             }
@@ -122,14 +131,14 @@ class Game_Activity : AppCompatActivity(),View.OnClickListener{
                     {
                         //winner is player too
                         AlertDialog.Builder(this)
-                            .setIcon(android.R.drawable.dialog_frame)
-                            .setTitle("Congratulations to PLAYER 2 for winning")
+                            .setTitle("Congratulations to O for winning")
                             .setMessage("Do you want to play it again")
+                            .setCancelable(false)
                             .setPositiveButton("YES"){ dialogInterface, i ->
                                 playAgainSetUp()
                             }
                             .setNegativeButton("NO"){dialogInterface, i ->
-                                finish();
+                                finish()
                             }
                             .show()
                     }
@@ -137,14 +146,14 @@ class Game_Activity : AppCompatActivity(),View.OnClickListener{
 
                     //match is drawn if it comes from above.
                     AlertDialog.Builder(this)
-                        .setIcon(android.R.drawable.dialog_frame)
-                        .setTitle("OOPS! MATCH IS DRAWN")
+                        .setTitle("OOPS Match is drawn")
                         .setMessage("Do you want to play it again")
+                        .setCancelable(false)
                         .setPositiveButton("YES"){ dialogInterface, i ->
                             playAgainSetUp()
                         }
                         .setNegativeButton("NO"){dialogInterface, i ->
-                            finish();
+                            finish()
                         }
                         .show()
 

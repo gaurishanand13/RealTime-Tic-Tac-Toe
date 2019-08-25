@@ -1,5 +1,6 @@
 package com.example.tictactoe.onlineGame
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_online_game_activity.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import org.jetbrains.anko.share
 import kotlin.coroutines.CoroutineContext
 
 class online_game_activity : AppCompatActivity() ,CoroutineScope{
@@ -28,6 +30,8 @@ class online_game_activity : AppCompatActivity() ,CoroutineScope{
     val myFirebaseDatabase  by lazy {
         FirebaseDatabase.getInstance().reference.child("tictactoe").child("$roomID")
     }
+
+
 
 
     /**
@@ -52,8 +56,17 @@ class online_game_activity : AppCompatActivity() ,CoroutineScope{
          * First fetching the roomID of the room
          */
         roomID = intent.getStringExtra("roomID")
+
         onlineGameRoomIDTextView.text = roomID
 
+
+        /**
+         * Setting up the share image image view
+         */
+        shareImageView.setOnClickListener {
+            val sharing_Text = "${onlineGameRoomIDTextView.text}"
+            share(sharing_Text,"Share")
+        }
 
 
         /**
@@ -87,6 +100,7 @@ class online_game_activity : AppCompatActivity() ,CoroutineScope{
                         onlineGameProgressBar.visibility = View.GONE
                         onlineGameRoomIDTextView.visibility = View.GONE
                         onlineMessageTextView.visibility = View.GONE
+                        shareImageView.visibility = View.GONE
                         onlineGameFrameLayout.visibility = View.VISIBLE
 
                         runOnUiThread {
@@ -232,6 +246,7 @@ class online_game_activity : AppCompatActivity() ,CoroutineScope{
                     AlertDialog.Builder(this)
                         .setTitle("Congratulations to X for winning")
                         .setMessage("Do you want to play it again")
+                        .setCancelable(false)
                         .setPositiveButton("YES"){ dialogInterface, i ->
                             playAgainSetUp()
                         }
@@ -242,15 +257,16 @@ class online_game_activity : AppCompatActivity() ,CoroutineScope{
                 }
                 else
                 {
-                    //winner is player too
+                    //winner is player 2
                     AlertDialog.Builder(this)
                         .setTitle("Congratulations to O for winning")
                         .setMessage("Do you want to play it again")
+                        .setCancelable(false)
                         .setPositiveButton("YES"){ dialogInterface, i ->
                             playAgainSetUp()
                         }
                         .setNegativeButton("NO"){dialogInterface, i ->
-                            finish();
+                            finish()
                         }
                         .show()
                 }
@@ -271,6 +287,7 @@ class online_game_activity : AppCompatActivity() ,CoroutineScope{
                     AlertDialog.Builder(this)
                         .setTitle("Congratulations to X for winning")
                         .setMessage("Do you want to play it again")
+                        .setCancelable(false)
                         .setPositiveButton("YES"){ dialogInterface, i ->
                             playAgainSetUp()
                         }
@@ -281,28 +298,30 @@ class online_game_activity : AppCompatActivity() ,CoroutineScope{
                 }
                 else
                 {
-                    //winner is player too
+                    //winner is player 2
                     AlertDialog.Builder(this)
                         .setTitle("Congratulations to O for winning")
                         .setMessage("Do you want to play it again")
+                        .setCancelable(false)
                         .setPositiveButton("YES"){ dialogInterface, i ->
                             playAgainSetUp()
                         }
                         .setNegativeButton("NO"){dialogInterface, i ->
-                            finish();
+                            finish()
                         }
                         .show()
                 }
             }else{
                 //match is drawn if it comes from above.
                 AlertDialog.Builder(this)
-                    .setTitle("OOPS! MATCH IS DRAWN")
+                    .setTitle("OOPs match is drawn")
                     .setMessage("Do you want to play it again")
+                    .setCancelable(false)
                     .setPositiveButton("YES"){ dialogInterface, i ->
                         playAgainSetUp()
                     }
                     .setNegativeButton("NO"){dialogInterface, i ->
-                        finish();
+                        finish()
                     }
                     .show()
             }

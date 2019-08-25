@@ -144,6 +144,14 @@
             android:textSize="30sp"
             android:layout_marginTop="115dp"
             android:layout_gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+    <ImageView
+            android:src="@drawable/share"
+            android:layout_marginLeft="160dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="115dp"
+            android:id="@+id/shareImageView"
+            android:layout_width="55dp"
+            android:layout_height="55dp"/>
 </FrameLayout>
